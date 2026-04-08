@@ -21,7 +21,7 @@ public class HomePage extends BasePage {
         try {
             popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(3000));
             popup.click(new Locator.ClickOptions().setForce(true));
-            page.waitForTimeout(500);
+            popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN).setTimeout(5000));
         } catch (PlaywrightException e) {
             System.out.println("Popup not displayed before logout, skip closing.");
         }
@@ -35,31 +35,23 @@ public class HomePage extends BasePage {
 
     public void clickLogout() {
         Locator logoutBtn = page.locator(LOGOUT_BUTTON);
-
-        logoutBtn.waitFor(new Locator.WaitForOptions()
-                .setState(WaitForSelectorState.VISIBLE)
-                .setTimeout(5000));
-
+        logoutBtn.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(5000));
         logoutBtn.click();
-
-        // Keep the confirm dialog visible for a moment before the next step.
-        page.locator(CONFIRM_LOGOUT).waitFor(new Locator.WaitForOptions()
-                .setState(WaitForSelectorState.VISIBLE)
-                .setTimeout(5000));
-        page.waitForTimeout(3000);
+        page.locator(CONFIRM_LOGOUT).waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(5000));
     }
 
     public void clickConfirmLogout() {
-        page.locator(CONFIRM_LOGOUT).waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(5000));
-        page.locator(CONFIRM_LOGOUT).click(new Locator.ClickOptions().setForce(true));
+        Locator confirmLogoutButton = page.locator(CONFIRM_LOGOUT);
+        confirmLogoutButton.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(5000));
+        confirmLogoutButton.click(new Locator.ClickOptions().setForce(true));
+        page.locator(VERIFY_LOGOUT).waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(10000));
     }
 
     public void logout(){
-//        closePopupIfPresent();
         openProfileMenu();
         clickLogout();
         clickConfirmLogout();
-//        verifyLogoutSuccess();
+        verifyLogoutSuccess();
     }
 
     public boolean isLoggedOut(){
@@ -81,4 +73,3 @@ public class HomePage extends BasePage {
         }
     }
 }
-

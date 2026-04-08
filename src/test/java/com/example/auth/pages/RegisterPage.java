@@ -24,7 +24,7 @@ public class RegisterPage extends BasePage {
         try {
             popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(3000));
             popup.click(new Locator.ClickOptions().setForce(true));
-            page.waitForTimeout(500); // Wait for page to stabilize after closing popup
+            popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN).setTimeout(5000));
         } catch (PlaywrightException e) {
             System.out.println("Popup not displayed before register, skip closing.");
         }
@@ -50,7 +50,6 @@ public class RegisterPage extends BasePage {
     }
 
     public void verifyRegisterSuccess() {
-        // Wait for success element to appear with timeout
         try {
             page.locator(VERIFY_SUCCESS).waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(10000));
             if (isSuccess()) {
@@ -66,7 +65,6 @@ public class RegisterPage extends BasePage {
     }
 
     public void verifySuccessPageElements() {
-        // Verify multiple elements appear after registration
         verifyRegisterSuccess();
 
         if (isSuccess()) {

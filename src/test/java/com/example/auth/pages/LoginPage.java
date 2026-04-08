@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
         try {
             popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(3000));
             popup.click(new Locator.ClickOptions().setForce(true));
-            page.waitForTimeout(500); // Wait for page to stabilize after closing popup
+            popup.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN).setTimeout(5000));
         } catch (PlaywrightException e) {
             System.out.println("Popup not displayed before login, skip closing.");
         }
@@ -68,13 +68,11 @@ public class LoginPage extends BasePage {
     }
 
     public void verifyLoginSuccess() {
-        // Wait for success element to appear with timeout
         page.locator(VERIFY_SUCCESS).waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(10000));
         System.out.println("✓ Login success verified - 'Deposit' button appeared");
     }
 
     public void verifySuccessPageElements() {
-        // Verify multiple elements appear after login
         verifyLoginSuccess();
 
         if (isSuccess()) {
