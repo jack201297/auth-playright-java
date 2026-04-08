@@ -1,0 +1,9 @@
+D:\auth-playwright-java\src\test\java\com\example\auth\base\BaseTest.java
+D:\auth-playwright-java\src\test\java\com\example\auth\pages\BasePage.java
+D:\auth-playwright-java\src\test\java\com\example\auth\pages\HomePage.java
+D:\auth-playwright-java\src\test\java\com\example\auth\pages\LoginPage.java
+D:\auth-playwright-java\src\test\java\com\example\auth\pages\RegisterPage.java
+D:\auth-playwright-java\src\test\java\com\example\auth\tests\LoginTest.java
+D:\auth-playwright-java\src\test\java\com\example\auth\tests\LogoutTest.java
+D:\auth-playwright-java\src\test\java\com\example\auth\tests\RegisterTest.java
+D:\auth-playwright-java\src\test\java\com\example\auth\utils\TestDataFactory.java

@@ -1,0 +1,9 @@
+com\example\auth\pages\LoginPage.class
+com\example\auth\tests\LogoutTest.class
+com\example\auth\tests\RegisterTest.class
+com\example\auth\base\BaseTest.class
+com\example\auth\pages\BasePage.class
+com\example\auth\pages\HomePage.class
+com\example\auth\utils\TestDataFactory.class
+com\example\auth\tests\LoginTest.class
+com\example\auth\pages\RegisterPage.class
